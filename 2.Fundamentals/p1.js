@@ -1,4 +1,4 @@
-// to print any content on DOM 
+// to print any content on DOM (Document Object Model)
 document.writeln("Welcome to JavaScript");
 
 document.writeln("<h1> Welcome to JavaScript </h1>");
@@ -20,7 +20,7 @@ document.writeln(`<ul>
                     <li>pink</li>
                 </ul>`);
 
-// print your name (h1), email id(h3), mobile number(p) using only one document.writeln menthod
+// print your name (h1), email id(h3), mobile number(p) using only one "document.writeln" menthod
 
 document.writeln(`<div class="block">
         <h1>Rithwik</h1>
