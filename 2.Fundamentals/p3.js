@@ -47,8 +47,24 @@ let last = "Harry";
 
 document.writeln(`<h3>my first name is ${first} and my last name is ${last}</h3>`);
 
+
+//boolean
 var t = true;
 var f = false;
 
 console.log(`t =`, typeof t);
 console.log(`f =`, typeof f);
+
+console.log("\n");
+
+//null and undefined
+var x1 = null;
+var x2 = undefined;
+
+console.log(`null=`,x1);
+console.log(`null=`, typeof x1); //object
+
+console.log("\n");
+
+console.log(`undefined=`,x2);
+console.log(`undefined=`, typeof x2); //undefined
