@@ -16,3 +16,9 @@ function user(name,email){
 
 var res = user("tom","tom@gmail.com")
 document.writeln(`<h3>${res}</h3>`)
+
+// 2. parameter non-return type
+function course(title,duration){
+    document.writeln(`<h4>course title is ${title} and duration is ${duration} months</h4>`)
+}
+course("java",2.5)
