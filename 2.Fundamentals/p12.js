@@ -1,0 +1,7 @@
+//Object array
+
+var users = [
+    {
+        
+    }
+]
