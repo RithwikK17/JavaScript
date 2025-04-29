@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>media events</h1>
+
+    <h2 id="out"></h2>
+
+    <video src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" width="500" height="300" controls onplay="playHan()" onpause="pauseHan()" onvolumechange="voHan()" onseeked="seekHan()"></video>
+
+    <script>
+        var msg = document.getElementById("out")
+
+        function playHan(){
+            msg.innerText = "Started playing video";
+            msg.style.color = "green";
+        }
+        function pauseHan(){
+            msg.innerText = "video pasued";
+            msg.style.color = "purple";
+        }
+        function voHan(){
+            msg.innerText = "volume is changing"
+            msg.style.color = "yellow"
+        }
+        function seekHan(){
+            msg.innerText = "video timing is changing"
+            msg.style.color = "red"
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>document.getElementsByClassName(class)</h1>
+
+    <section>
+
+        <div>
+            <p>sample paragrapgh text</p>
+            <p>sample paragrapgh text</p>
+            <p class="p1">sample paragrapgh text</p>
+            <p>sample paragrapgh text</p>
+            <p>sample paragrapgh text</p>
+            <p class="p1">sample paragrapgh text</p>
+        </div>
+
+        <hr>
+
+        <main>
+            <p>sample paragrapgh text</p>
+            <p>sample paragrapgh text</p>
+            <p class="p1">sample paragrapgh text</p>
+            <p>sample paragrapgh text</p>
+            <p>sample paragrapgh text</p>
+            <p class="p1">sample paragrapgh text</p>
+        </main>
+
+        <hr>
+
+        <button onclick="handler()">Click me</button>
+
+        <script>
+            function handler(){
+                let p1El = document.getElementsByClassName("p1")
+                console.log(`p1El = `,p1El)
+
+                let i = 0
+                while(i< p1El.length){
+                    p1El[i].style.color = "darkblue"
+                    p1El[i].style.textAlign = "center"
+                    p1El[i].style.fontSize = "25px"
+                    i++
+                }
+            }
+        </script>
+    </section>
+</body>
+</html>

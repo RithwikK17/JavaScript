@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>document.cookie</h1>
+    <!-- cookie is a browser variable,
+        create cookie , read cookie, delete cookie -->
+
+    <form autocomplete="off" onsubmit="submithandler(event)">
+        <div>
+            <label for="user">Your username</label>
+            <input type="text" name="user" id="user" required>
+        </div>
+
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+    <h1 id="output"></h1>
+    <button onclick="deleteCookie()">Delete Cookie</button>
+
+    <script>
+        let userEl = document.getElementById("user")
+        let outEl = document.getElementById("output")
+
+        function submithandler(event){
+            event.preventDefault();
+            let user = userEl.value;
+            console.log(`new user = `, user)
+
+            document.cookie = `username=${user};expires=${new Date().toLocaleString()}; SameSite=None; Secure`;
+            alert("cookie set successfully")
+            window.location.reload(); // reload current page
+        }
+
+        // read the cookie
+        function readHandler(){
+            if(document.cookie){
+                let res = document.cookie.split("=")
+                console.log(`cookie = `, res)
+                outEl.innerText = `${res[0]} is ${res[1]}`
+            } else {
+                outEl.innerText = "no cookie has set"
+            }
+        }
+        readHandler()
+
+        function deleteCookie(){
+            if(confirm(`Do you wish to delete cookie?`)){
+                let today = new Date()
+                today.setTime(today.getTime()-1)
+                document.cookie = `username=; expires=${today.toGMTString()}`
+                alert("Cookie deleted Successfully")
+                window.location.reload();
+            }
+        }
+    </script>
+</body>
+</html>

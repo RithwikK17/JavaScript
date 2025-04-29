@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>string repeat and endsWith(str)</h1>
+    <script>
+        var str = "hello"
+        console.log(`repeat =`, str.repeat(3))
+
+        console.log(`\n`)
+
+        let str1 = "welcome to javascript frontend script"
+         
+        let check = str1.endsWith("script")
+        console.log(`check =`, check)
+
+        console.log(`\n`)
+
+        // ASCII to string
+        let str2 = String.fromCharCode(72,69,76,76,79)
+        console.log(`str2 =`, str2)
+
+        console.log(`\n`)
+
+        let str3 = String.fromCodePoint(72,69,76,76,79)
+        console.log(`str3 =`, str3)
+    </script>
+</body>
+</html>

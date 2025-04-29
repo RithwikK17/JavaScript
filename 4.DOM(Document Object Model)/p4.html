@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #out{
+            background-color: orangered;
+            color: black;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>document.getElementById(id)</h1>
+
+    <button id="btn" onclick="handler()">Product</button>
+
+    <hr>
+
+    <div id="out"></div>
+
+    <script>
+        function handler(){
+            let x = prompt("Enter number x:")
+            let y = prompt("Enter number y:")
+
+            let res = x*y;
+            document.getElementById("out").innerHTML = `<h1> product = ${res}</h1>`;
+            document.getElementById("btn").innerText = "Button clicked";
+            document.getElementById("out").style.backgroundColor = "blue" ;
+            document.getElementById("out").style.Color = "white" ;
+            document.getElementById("out").style.padding = "10px" ;
+
+        }
+    </script>
+</body>
+</html>

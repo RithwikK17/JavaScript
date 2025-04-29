@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>String methods</h1>
+    <script>
+        var str = "Welcome to JavaScript String methods"
+        console.log(`str = `, str)
+
+        console.log(`charAt(pos) =`, str.charAt(0)) // W
+        console.log(`charAt(pos) =`, str.charAt(18)) // i
+
+        console.log(`charCodeAt(pos) =`, str.charCodeAt(0)) // 87
+        console.log(`charCodeAt(pos) =`, str.charCodeAt(18)) // 105
+
+        console.log(`\n`)
+
+        console.log(`indexOf(char) =`, str.indexOf(`e`)) // 1
+        console.log(`lastIndexOf(char) =`, str.lastIndexOf(`e`)) // 30
+
+        console.log(`\n`)
+
+        console.log(`length =`, str.length) // 36
+
+        console.log(`\n`)
+
+        var str1 = "John is an engineer. JOHN is working in IBM. john stays in bangalore";
+
+        // str.replace(target, value)
+        console.log(`str1 =`, str1)
+        console.log(`replace =`, str1.replace("john", "tom"))
+        console.log(`replace =`, str1.replace(/john/, "tom")) /* /expression/ */
+        console.log(`replace =`, str1.replace(/john/gi, "Tom")) // gi - global case insensitive
+
+    </script>
+</body>
+</html>

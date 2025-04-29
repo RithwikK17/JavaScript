@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>document.grtElementByTagName()</h1>
+
+    <div>
+        <p>sample para</p>
+        <p>sample para</p>
+        <p>sample para</p>
+        <p>sample para</p>
+        <p>sample para</p>
+        <p>sample para</p>
+    </div>
+
+    <hr>
+
+    <section>
+        <h3>header section</h3>
+        <h3>header section</h3>
+        <h3>header section</h3>
+        <h3>header section</h3>
+        <h3>header section</h3>
+        <h3>header section</h3>
+    </section>
+
+    <button onclick="handler()">Click Me</button>
+
+    <script>
+        function handler(){
+            let paraEl = document.getElementsByTagName("p");
+        let h3El = document.getElementsByTagName("h3");
+
+        console.log(`paraEl = `, paraEl)
+        console.log(`h3El = `, h3El)
+
+        for(let i=0; i< paraEl.length; i++){
+            paraEl[i].style.color = "salmon"
+            paraEl[i].style.textAlign = "center"
+            paraEl[i].style.fontSize = "20px"
+        }
+
+        for(let i=0; i< h3El.length; i++){
+            h3El[i].style.color = "blue"
+            h3El[i].style.textAlign = "right"
+            h3El[i].style.fontSize = "20px"
+        }
+
+
+        }
+    </script>
+</body>
+</html>

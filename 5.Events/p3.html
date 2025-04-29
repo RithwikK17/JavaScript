@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .blk{
+            padding: 20px;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>mouse events</h1>
+    <h3> onmouseenter and onmouseout</h3>
+    <!-- 
+        onmousemove
+        onmouseover
+        onmouseleave
+        onmouseenter
+        onmouseout
+        onmousedown
+        onmouseup
+
+        deprecated events
+        onmousein
+        onmousewheel
+    -->
+
+    <div class="blk" onmouseup="handler1()" onmousedown="handler2()">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero veniam, rerum nisi accusamus repellat distinctio, unde magnam praesentium neque enim excepturi alias quam nulla itaque perspiciatis ad laboriosam reiciendis similique.
+    Vitae assumenda tempore veniam deleniti iure atque, ipsam quo necessitatibus maiores nisi repellendus inventore accusamus saepe ea sint expedita fuga cupiditate illo. Laboriosam hic veniam nisi accusantium eligendi numquam a.
+    Id asperiores soluta accusamus quae laborum minus debitis nesciunt eveniet ipsa, dolorem hic tempora explicabo excepturi architecto delectus nobis sed suscipit, fugiat quis voluptates sequi obcaecati ducimus ullam! Molestias, hic.</div>
+
+    <script>
+        let bk = document.querySelector(".blk")
+        function handler1(){
+            bk.style.backgroundColor = "fuchsia";
+            bk.style.color = "white";
+        }
+        function handler2(){
+            bk.style.backgroundColor = "slateblue";
+            bk.style.color = "white";
+        }
+    </script>
+</body>
+</html>

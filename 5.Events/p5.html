@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>format events</h1>
+    <h3>oncopy, onselect, oncut, onpaste</h3>
+
+    <div class="content">
+        <label for="">Sample Heading</label> <br>
+        <textarea name="" id="" cols="30" rows="5" onselect="selHandler()" oncopy="copyHandler()">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni voluptate iure, distinctio culpa odit accusamus explicabo quod. Obcaecati odit blanditiis voluptate eligendi cupiditate pariatur velit, minus, saepe cumque rem unde.
+        </textarea>
+    </div>
+    <hr>
+    <div class="content">
+        <label for="">Sample heading</label>
+        <textarea name="" id="" cols="30" rows="5" onpaste="pasteHandler()" oncut="cutHandler()"></textarea>
+    </div>
+
+    <script>
+        function selHandler(){
+            alert("content Selected")
+        }
+        function copyHandler(){
+            alert("content copied")
+        }
+        function pasteHandler(){
+            alert("content pasted")
+        }
+        function cutHandler(){
+            alert("content is cut and ready to be pasted")
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .block{
+            width: 300px;
+            background-color: orangered;
+        }
+
+        table,tr,th,td{
+            border: none;
+            border-collapse: collapse;
+        }
+
+        td,th{
+            padding: 10px;
+        }
+
+        tr:nth-child(odd){
+            background-color: #ccc;
+            color: teal;
+        }
+
+        tr.heading{
+            background-color: teal;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Fundamentals</h1>
+    <button onclick="printName('Prateek')">Click Me</button>
+    <hr>
+    <button id="btn">Event Listener</button>
+    <hr>
+    <button id="login">Login Here</button>
+
+    <script src="./p15.js"></script>
+</body>
+</html>
