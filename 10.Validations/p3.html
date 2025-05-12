@@ -9,14 +9,14 @@
 <body>
     <div class="container">
         <div class="title">
-            <h1>validating name</h1>            
+            <h1>Validating Indian Mobile NUmber</h1>            
         </div>
 
         <div class="card">
             <form autocomplete="off" method="post" onsubmit = "submitHandler(event)">
                 <div class="form-item">
-                    <label for="name">Your name</label>
-                    <input type="text" name="name" id="name" class="form-control" required>
+                    <label for="mobile">Your Mobile Number</label>
+                    <input type="text" name="mobile" id="mobile" minlength="10"  class="form-control" >
                 </div>
                 <div class="form-item">
                     <input type="submit" value="Submit" class="btn success">
@@ -27,6 +27,6 @@
             <div id="status"></div>
         </div>
     </div>
-    <script src ="./p1.js"></script>
+    <script src ="./p3.js"></script>
 </body>
 </html>
