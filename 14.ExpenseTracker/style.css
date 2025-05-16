@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+*{
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    background-color: #e1e1e1;
+}
+
+.home{
+    padding: 20px;
+    width: 100%;
+    margin: 0% auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container{
+    min-width: 800px;
+    margin: 0% auto;
+}
+
+.container header{
+    padding: 1rem;
+    width: 95%;
+    position: relative;
+}
+
+header .title{
+    position: relative;
+    width: fit-content;
+    color: #3b3b3b;
+}
+
+header .title .underline{
+    height: 4px;
+    width: 70%;
+    background-image: linear-gradient(to right bottom, #20bf65, #01baef);
+    border-radius: 99px;
+}
+
+.dashboard,
+.expenseIncomeList p{
+    width: 40vw;
+    margin: 0 auto;
+    background-image: linear-gradient(to right bottom, #30bf55, #01baef);
+    padding: 20px;
+    border-radius: 12px;
+    color: white;
+    line-height: 35px;
+    margin-top: 10px;
+    user-select: none;
+}
+
+.dashboard .dashboardBottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dashboard p{
+    color: #3b3b3b;
+    font-weight: 800;
+}
+
+#balance{color:#222}
+#income{color:gold}
+#expense{color:red}
