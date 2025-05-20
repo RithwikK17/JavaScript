@@ -1,96 +1,138 @@
-// DOM elements
-let balEl = document.getElementById("balance");
-let incEl = document.getElementById("income");
-let expEl = document.getElementById("expense");
+// dom elements - display output
+let balEl = document.getElementById("balance")
+let incEl = document.getElementById("income")
+let expEl = document.getElementById("expense")
 
-// Form elements
-let formEl = document.getElementById("expenseForm");
-let titleEl = document.getElementById("title");
-let amountEl = document.getElementById("amount");
-let btnEl = document.getElementById("submitBtn");
+// form elements - input
+let formEl = document.getElementById("expenseForm")
+let titleEl = document.getElementById("title")
+let amountEl = document.getElementById("amount")
+let btnEl = document.getElementById("submitBtn")
 
-// Output elements -> transaction list
-let listEl = document.getElementById("list");
+// output elements -> transaction list
+let listEl = document.getElementById("list")
 
-// Read transactions from localStorage
+//for edit
+let trId = null;
+let isEdit = false;
+
+
+// read transaction from local storage
 function readTransactions() {
+    // localStorage.getItem(key_name)
     return localStorage.getItem("transactions") ? JSON.parse(localStorage.getItem("transactions")) : [];
 }
 
-// Store data in a variable
-let data = readTransactions();
+// store the result in variable
+let data = readTransactions()
 
-// Create a transaction
-function createTransaction(val) {
-    data.unshift(val);
-    localStorage.setItem("transactions", JSON.stringify(data));
-    renderTransactions();
-    updateIncExpBalance();
-    formEl.reset(); // Clear the form
-}
+//edit handler 
+function editHandler(id){
+    console.log(`edit trId =`, id)
+    trId = id;
+    isEdit = false;
 
-// Render the transactions
-function renderTransactions() {
-    listEl.innerHTML = ""; // Clear previous list
+    // read the value from data
+    let tr = data.find(item => Number(item.id) === Number(trId))
+    console.log(`single tr =`, tr)
 
-    data.forEach(item => {
-        let typeClass = Number(item.amount) > 0 ? 'income' : 'expense';
-
-        let li = document.createElement('li');
-        li.className = typeClass;
-
-        li.innerHTML = `
-            <div class="leftItem">
-                <span>${item.title}</span>
-                <span>${item.amount}</span>
-            </div>
-            <div class="rightItem">
-                <span class="btn edit">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                </span>
-                <span class="btn delete">
-                    <i class="fa-solid fa-trash"></i>
-                </span>
-            </div>
-        `;
-        listEl.appendChild(li);
-    });
-}
-
-// Update balance, income, and expense display
-function updateIncExpBalance() {
-    let amounts = data.map(item => Number(item.amount));
-
-    let total = amounts.reduce((acc, curr) => acc + curr, 0).toFixed(2);
-    let income = amounts.filter(val => val > 0).reduce((acc, curr) => acc + curr, 0).toFixed(2);
-    let expense = amounts.filter(val => val < 0).reduce((acc, curr) => acc + curr, 0).toFixed(2);
-
-    balEl.innerHTML = `&#8377; ${total}`;
-    incEl.innerHTML = `&#8377; ${income}`;
-    expEl.innerHTML = `&#8377; ${expense}`;
-}
-
-// Handle form submission
-formEl.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    let title = titleEl.value.trim();
-    let amount = Number(amountEl.value);
-
-    if (title === "" || isNaN(amount) || amount === 0) {
-        alert("Please enter a valid title and a non-zero amount.");
-        return;
+// if isEdit is true , set the values in form inputs    
+    if(trId && isEdit){
+        btnEl.innerText = `Update`;
+        btnEl.classList.remove(`dark`);
+        btnEl.classList.add(`warning`);
+        titleEl.value = tr.title;
+        amountEl.value = tr.amount;
     }
+}
 
-    let newTransaction = {
-        id: Date.now(),
-        title: title,
-        amount: amount
+// update transactions
+function updateTransaction(val){
+    let trIndex = data.findIndex(item => Number(item.id) === Number(trId))
+
+    let upVal = {
+        id : trId,
+        ...val
     };
+    data.splice(trIndex,1,upVal)
+    localStorage.setItem("transactions", JSON.stringify(data))
+    alert("Transcation Details updated");
+    updateIncExpBalance();
+    window.location.reload();
+}
 
-    createTransaction(newTransaction);
-});
+// create transactions
+function createTransaction (val) {
+    data.unshift(val)
+    // localStorage.setItem(key,value)
+    localStorage.setItem("transactions", JSON.stringify(data))
+    alert("New transaction created successfully")
+    window.location.reload() // refresh the current page
+}
 
-// Initial render
-renderTransactions();
-updateIncExpBalance();
+// print the transactions
+function printTransaction(val) {
+     val.forEach(function(item){
+        listEl.innerHTML += `<li class="${Number(item.amount) > 0 ? 'income': 'expense'}">
+                                 <div class="leftItem">
+                                        <span class=""> ${item.title} </span>
+                                        <span class=""> ${item.amount} </span>
+                                 </div> 
+                                 <div class="rightItem">
+                                      <span class="btn edit" onclick ="editHandler('${item.id}')">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                      </span>
+                                      <span class="btn delete">
+                                            <i class="fa-solid fa-trash"></i>
+                                      </span>
+                                 </div>
+                            </li>`
+     })
+}
+
+printTransaction(data)
+
+
+// store the data in local storage
+formEl.addEventListener("submit", function(e){
+    e.preventDefault();// to avoid page reload
+
+    if(amountEl.value === 0 || amountEl.value == -0) {
+        alert("Enter non zero value in amount.")
+        amountEl.value = '';
+    } else {
+        let trData = {
+            id: isEdit ? trId : Math.round(Math.random() * 100000),
+            title: titleEl.value,
+            amount: amountEl.value
+        }
+        console.log(`input =`, trData)
+        if(trId && isEdit){
+            updateTransaction(trData)
+        } else {
+            createTransaction(trData)
+        }
+    }
+})
+
+
+// display the transactions data
+function updateIncExpBalance() {
+    let amounts = data.map((item,index) => Number(item.amount));
+    console.log(`amounts = `, amounts)
+
+    // balance
+    let bal = amounts.reduce((ac,cu) => ac + cu,0).toFixed(2);
+    balEl.innerHTML = bal > -1 ? `&#8377; ${bal}` : `-&#8377; ${bal}`;
+
+    // income 
+    let inc = amounts.filter((val) => val > 0).reduce((ac,cu) => ac + cu,0).toFixed(2);
+    incEl.innerHTML = `&#8377; ${inc}`;
+
+    //exp 
+    let negVl = amounts.filter(val => val < 0);
+    let exp = negVl.reduce((ac,cu) => ac + cu, 0);
+    expEl.innerHTML = `&#8377; ${exp.toFixed(2)}`;
+}
+
+updateIncExpBalance()
